@@ -1,41 +1,48 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Steganography;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import java.awt.Color;
 import java.io.IOException;
-import java.io.InputStream;
+import java.awt.image.BufferedImage;
+import javax.imageio.ImageIO;
 import java.util.Scanner;
 
-/**
- *
- * @author dev
- */
 public class Medium {
     String fileName;
     int size;
-    //info obj...
-//    public void loadMedium(){
-//        
-//    }
-//    public int saveMedium(String fileName){
-//        
-//    }
     public int lsb(int bits) throws IOException{
-        File f = new File("/home/dev/Data/PESU/6th Sem/OOAD/Project/Steganography/app/src/main/java/Steganography/App.java");
-        InputStream s = new FileInputStream("/home/dev/Data/PESU/6th Sem/OOAD/Project/Steganography/app/src/main/java/Steganography/1");
-        byte[] fi = new byte[100];
-        float len = f.length();
-//        System.out.println(len);
-        s.read(fi);
-        String data = new String(fi);
-//        for(long i = 0; i < len; i++){
-        System.out.println(data);
-//        }
+        Scanner s = new Scanner(System.in);
+        System.out.print("Enter the path: ");
+        String path = "C:\\Users\\ultim\\Desktop\\sample.jpg";
+        String ext = "";
+        for(int i = path.length() - 1; path.charAt(i) != '.'; i--) {
+            ext = path.charAt(i) + ext;
+        }
+        System.out.println(ext);
+        File f = new File(path);
+        int height, width;
+        BufferedImage image = null;
+        image = ImageIO.read(f);
+        height = image.getHeight();
+        width = image.getWidth();
+        System.out.println("Height: " + height + ", Width: " + width);
+
+        for(int i = 0; i < image.getWidth(); i++) {
+            for(int j = 0; j < image.getHeight(); j++) {
+                int pixel = image.getRGB(i, j);
+                int r, g, b;
+                r = (pixel >> 16) & 255;
+                g = (pixel >> 8) & 255;
+                b = pixel & 255;
+                System.out.print(pixel + " (" + r + ", " + g + ", " + b + ") ");
+                Color c = new Color(pixel, true);
+                r = c.getRed();
+                g = c.getGreen();
+                b = c.getBlue();
+                System.out.println(pixel + " (" + r + ", " + g + ", " + b + ")");
+            }
+        }
+        s.close();
         return 0;
     }
     public static void main(String []args) throws IOException{
