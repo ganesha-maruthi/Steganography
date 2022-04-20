@@ -6,3 +6,8 @@ build
 
 # Ignore bytecode
 **/*.class
+
+*.bat
+
+.gitignore
+.vscode
