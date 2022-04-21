@@ -1,9 +1,6 @@
 package Steganography;
 
-import java.io.File;
-import java.io.FileWriter;
-// import java.awt.Color;
-import java.io.IOException;
+import java.io.*;
 import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 import java.util.Scanner;
@@ -13,7 +10,7 @@ public class Medium {
     public int lsb(int bits) throws IOException{
         Scanner s = new Scanner(System.in);
         System.out.print("Enter the path: ");
-        String path = "C:\\Users\\ultim\\Desktop\\sample - Copy.jpg";
+        String path = "C:\\Users\\ultim\\Desktop\\sample.jpg";
         // path = s.nextLine();
 
         System.out.print("Enter output filename: ");
@@ -26,46 +23,40 @@ public class Medium {
 
         File f = new File(path);
         File f_op = new File(op_path);
-        int height, width;
+        int height, width, max_payload;
         BufferedImage image = null;
         image = ImageIO.read(f);
         height = image.getHeight();
         width = image.getWidth();
-        System.out.println("Height: " + height + ", Width: " + width);
-
-        /* for(int i = 0; i < image.getWidth(); i++) {
-            for(int j = 0; j < image.getHeight(); j++) {
-                int pixel = image.getRGB(i, j);
-                int r, g, b;
-                r = (pixel >> 16) & 255;
-                g = (pixel >> 8) & 255;
-                b = pixel & 255;
-                System.out.print(pixel + " (" + r + ", " + g + ", " + b + ") ");
-                Color c = new Color(pixel, true);
-                r = c.getRed();
-                g = c.getGreen();
-                b = c.getBlue();
-                System.out.println(pixel + " (" + r + ", " + g + ", " + b + ")");
-            }
-        } */
+        max_payload = (width * height * 3) / 8;
+        System.out.println("Height: " + height + ", Width: " + width + ", Max Payload: " + max_payload + " bytes, " + (float)(max_payload / 1024) + " KB, " + (float)(max_payload / (1024 * 1024)) + " MB");
 
         String message = "";
+        int c;
         System.out.print("Enter the message: ");
         String ip_path = "C:\\Users\\ultim\\Desktop\\";// + s.nextLine();
-        ip_path = "C:\\Users\\ultim\\Desktop\\UG_v2.pdf";
+        ip_path = "C:\\Users\\ultim\\Desktop\\sample.xlsx";
         File ip_file = new File(ip_path);
-        Scanner file_reader = new Scanner(ip_file);
+        FileInputStream file_reader = new FileInputStream(ip_file);
+        System.out.println(ip_file.exists());
+        System.out.println(ip_file.getName());
+        System.out.println(ip_file.length());
 
-        while(file_reader.hasNextLine()) {
-            message += file_reader.nextLine() + "\n";
+        if(ip_file.length() > max_payload) {
+            System.out.println("File size too large!");
+            s.close();
+            file_reader.close();
+            return 0;
         }
+
+        while((c = file_reader.read()) != -1) {
+            message += (char) c;
+            // System.out.print((char) c);
+        }
+        // System.out.print("\n================\n");
         file_reader.close();
         // System.out.println(message);
         // System.out.println(message.length());
-        
-        /* for(int i = 0; i < 100000; i++) {
-            message += (char)(i & 255);
-        } */
 
         int msgsize = message.length();
         System.out.println("Message length: " + msgsize + " (" + msgsize * 8 + ")");
@@ -74,16 +65,17 @@ public class Medium {
         len[2] = (byte) ((msgsize >> 8) & 255);
         len[1] = (byte) ((msgsize >> 16) & 255);
         len[0] = (byte) ((msgsize >> 24) & 255);
-        String binary = "0"; //String.format("%032d", Integer.parseInt(Integer.toString(msgsize, 2)));
+        String binary = "0";
         byte temp;
         for(int i = 0; i < 4; i++) {
             temp = len[i];
-            binary += String.format("%08d", Integer.parseInt(Integer.toString(temp, 2)));
+            binary += String.format("%08d", Integer.parseInt(Integer.toString((int)temp & 0xff, 2)));
         }
-        System.out.println(binary);
+        System.out.println(binary.substring(1));
         for(int i = 0; i < msgsize; i++) {
             temp = (byte) message.charAt(i);
-            binary += String.format("%08d", Integer.parseInt(Integer.toString(temp, 2)));
+            binary += String.format("%08d", Integer.parseInt(Integer.toString((int)temp & 0xff, 2)));
+            // System.out.println(temp + " " + String.format("%08d", Integer.parseInt(Integer.toString((int)temp & 0xff, 2))));
         }
         while(binary.length() % 3 > 0) {
             binary += '1';
@@ -91,6 +83,9 @@ public class Medium {
         // System.out.println(binary.substring(33));
         msgsize = binary.length();
         System.out.println("Message size in bits: " + msgsize);
+        /* FileWriter file_writer = new FileWriter("C:\\Users\\ultim\\Desktop\\bin");
+        file_writer.write(binary.substring(33));
+        file_writer.close(); */
 
         int a, r, g, b, new_r, new_g, new_b, bit1, bit2, bit3, pixel, new_pixel;
         int x = -1, y = 0;
@@ -115,13 +110,13 @@ public class Medium {
             b = pixel & 255;
             
             bit1 = (int) binary.charAt(idx);
-            new_r = (r & (Integer.MAX_VALUE << 1)) | (bit1 - '0');
+            new_r = (r & (Integer.MAX_VALUE << 1)) | (bit1 - 48);
 
             bit2 = (int) binary.charAt(idx + 1);
-            new_g = (g & (Integer.MAX_VALUE << 1)) | (bit2 - '0');
+            new_g = (g & (Integer.MAX_VALUE << 1)) | (bit2 - 48);
 
             bit3 = (int) binary.charAt(idx + 2);
-            new_b = (b & (Integer.MAX_VALUE << 1)) | (bit3 - '0');
+            new_b = (b & (Integer.MAX_VALUE << 1)) | (bit3 - 48);
 
             /* System.out.print((char)bit1);
             System.out.print((char)bit2);
@@ -136,7 +131,7 @@ public class Medium {
         ImageIO.write(image, "png", f_op);
 
         s.close();
-        return 0;
+        return 1;
     }
 
     public void read() throws IOException{
@@ -177,15 +172,9 @@ public class Medium {
             binary = binary + Integer.toString(bit1) + Integer.toString(bit2) + Integer.toString(bit3);
         }
         System.out.print(binary.substring(1) + ": ");
-        // System.out.println(Integer.parseInt(binary.substring(1), 2));
-
-        /* int msgsize;
-        msgsize = len[3] & 255;
-        msgsize |= (len[3] >> 8) & 255;
-        msgsize |= (len[3] >> 16) & 255;
-        msgsize |= (len[3] >> 24) & 255; */
+        System.out.println(Integer.parseInt(binary.substring(1), 2));
         int msgsize = Integer.parseInt(binary.substring(1), 2) * 8;
-        System.out.println(msgsize);
+        // System.out.println(msgsize);
         binary = "";
         for(int idx = 0; idx < msgsize; idx += 3) {
             // System.out.print("(" + x + ", " + y + "): ");
@@ -214,16 +203,22 @@ public class Medium {
             binary = binary + Integer.toString(bit1) + Integer.toString(bit2) + Integer.toString(bit3);
         }
         // System.out.println(binary);
-        String msg = "";
+        /* String msg = "";
         for(int i = 0; i < msgsize; i += 8) {
             msg += (char)Integer.parseInt(binary.substring(i, i + 8), 2);
+        } */
+        byte[] msg = new byte[msgsize / 8];
+        for(int i = 0; i < msgsize / 8; i++) {
+            msg[i] = (byte) Integer.parseInt(binary.substring(i * 8, i * 8 + 8), 2);
         }
-        // System.out.print("\n");
         // s.close();
-        // System.out.println(msg);
-        FileWriter file_writer = new FileWriter("C:\\Users\\ultim\\Desktop\\steg_out");
+        System.out.println("Hidden message length: " + msgsize / 8);
+        FileOutputStream file_writer = new FileOutputStream("C:\\Users\\ultim\\Desktop\\steg_out");
         file_writer.write(msg);
         file_writer.close();
+        /* FileWriter file_writer2 = new FileWriter("C:\\Users\\ultim\\Desktop\\bin2");
+        file_writer2.write(binary);
+        file_writer2.close(); */
     }
     public static void main(String []args) throws IOException{
         Medium l = new Medium();
