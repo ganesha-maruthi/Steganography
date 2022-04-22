@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <NonVisualComponents>
+    <Component class="javax.swing.ButtonGroup" name="buttonGroup1">
+    </Component>
+  </NonVisualComponents>
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="3"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="DecodeOutputFilePathLabel" alignment="0" min="-2" pref="127" max="-2" attributes="0"/>
+                          <Component id="DecodeBaseFilePathLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Component id="EncodeOutputFilePathLabel" alignment="0" min="-2" pref="127" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="EncodeInputFilePathLabel" max="32767" attributes="0"/>
+                      <Component id="EncodeBaseFilePathLabel" pref="127" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="EncodeBaseFilePathField" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
+                  <Component id="EncodeInputFilePathField" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
+                  <Component id="EncodeOutputFilePathField" alignment="0" max="32767" attributes="0"/>
+                  <Component id="DecodeBaseFilePathField" alignment="0" min="-2" pref="302" max="-2" attributes="0"/>
+                  <Component id="DecodeOutputFilePathField" alignment="0" min="-2" pref="302" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="38" max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="22" pref="22" max="-2" attributes="0"/>
+                      <Component id="EncodeBitsNumberLabel" min="-2" pref="127" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                      <Component id="EncodeBitsButton_1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="EncodeBitsButton_2" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="EncodeBitsButton_3" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="EncodeBitsButton_4" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="EncodeBitsButton_5" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="EncodeBitsButton_6" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="EncodeBitsButton_7" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="EncodeBitsButton_8" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="28" pref="28" max="-2" attributes="0"/>
+                      <Component id="DecodeBitsNumberLabel" min="-2" pref="127" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                      <Component id="DecodeBitsButton_1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="DecodeBitsButton_2" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="DecodeBitsButton_3" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="DecodeBitsButton_4" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="DecodeBitsButton_5" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="DecodeBitsButton_6" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="DecodeBitsButton_7" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="DecodeBitsButton_8" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="22" pref="22" max="-2" attributes="0"/>
+                      <Component id="jSeparator1" min="-2" pref="464" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="EncodeButton" min="-2" pref="75" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="223" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="DecodeButton" min="-2" pref="75" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="220" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="EncodeBaseFilePathField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="EncodeBaseFilePathLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="EncodeInputFilePathField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="EncodeInputFilePathLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="EncodeBitsNumberLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="EncodeBitsButton_1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="EncodeBitsButton_2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="EncodeBitsButton_3" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="EncodeBitsButton_4" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="EncodeBitsButton_5" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="EncodeBitsButton_6" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="EncodeBitsButton_7" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="EncodeBitsButton_8" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="EncodeOutputFilePathField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="EncodeOutputFilePathLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="EncodeButton" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="25" max="32767" attributes="0"/>
+              <Component id="jSeparator1" min="-2" pref="22" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="DecodeBaseFilePathField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="DecodeBaseFilePathLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="DecodeBitsNumberLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="DecodeBitsButton_1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="DecodeBitsButton_2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="DecodeBitsButton_3" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="DecodeBitsButton_4" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="DecodeBitsButton_5" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="DecodeBitsButton_6" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="DecodeBitsButton_7" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="DecodeBitsButton_8" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="DecodeOutputFilePathField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="DecodeOutputFilePathLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="DecodeButton" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JLabel" name="EncodeBaseFilePathLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Path to Base Medium:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="EncodeBaseFilePathField">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EncodeBaseFilePathFieldActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="EncodeInputFilePathLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Path to Input File:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="EncodeInputFilePathField">
+    </Component>
+    <Component class="javax.swing.JLabel" name="EncodeBitsNumberLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Number of bits of LSB:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JRadioButton" name="EncodeBitsButton_1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="1"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JRadioButton" name="EncodeBitsButton_2">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="2"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JRadioButton" name="EncodeBitsButton_3">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="3"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JRadioButton" name="EncodeBitsButton_4">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="4"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JRadioButton" name="EncodeBitsButton_5">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="5"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JRadioButton" name="EncodeBitsButton_6">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="6"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JRadioButton" name="EncodeBitsButton_7">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="7"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JRadioButton" name="EncodeBitsButton_8">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="8"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="EncodeButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Encode"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EncodeButtonActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="EncodeOutputFilePathLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Path to Output File:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="EncodeOutputFilePathField">
+    </Component>
+    <Component class="javax.swing.JRadioButton" name="DecodeBitsButton_4">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="4"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JRadioButton" name="DecodeBitsButton_5">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="5"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JRadioButton" name="DecodeBitsButton_6">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="6"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JRadioButton" name="DecodeBitsButton_7">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="7"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JRadioButton" name="DecodeBitsButton_8">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="8"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="DecodeButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Decode"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DecodeButtonActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="DecodeOutputFilePathLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Path to Output File:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="DecodeOutputFilePathField">
+    </Component>
+    <Component class="javax.swing.JLabel" name="DecodeBaseFilePathLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Path to Stegano Medium:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="DecodeBaseFilePathField">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DecodeBaseFilePathFieldActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="DecodeBitsNumberLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Number of bits of LSB:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JRadioButton" name="DecodeBitsButton_1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="1"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JRadioButton" name="DecodeBitsButton_2">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="2"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JRadioButton" name="DecodeBitsButton_3">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="3"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JSeparator" name="jSeparator1">
+    </Component>
+  </SubComponents>
+</Form>

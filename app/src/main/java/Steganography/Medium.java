@@ -6,44 +6,56 @@ import javax.imageio.ImageIO;
 import java.util.Scanner;
 
 public class Medium {
+    String basefilepath, inputfilepath, outputfilepath;
+
+    Medium(String basefilepath, String inputfilepath, String outputfilepath) {
+        this.basefilepath = basefilepath;
+        this.inputfilepath = inputfilepath;
+        this.outputfilepath = outputfilepath;
+    }
+
+    Medium(String basefilepath, String outputfilepath) {
+        this.basefilepath = basefilepath;
+        this.outputfilepath = outputfilepath;
+    }
 
     public int lsb(int bits) throws IOException{
         Scanner s = new Scanner(System.in);
-        System.out.print("Enter the path: ");
-        String path = "C:\\Users\\ultim\\Desktop\\base.jpg";
+        // System.out.print("Enter the path: ");
+        // String path = "C:\\Users\\ultim\\Desktop\\base.jpg";
         // path = s.nextLine();
 
-        System.out.print("Enter output filename: ");
-        String op_path = "C:\\Users\\ultim\\Desktop\\" + "out.png"; // + s.nextLine() + ".png";
-        String ext = "";
+        // System.out.print("Enter output filename: ");
+        // String this.outputfilepath = "C:\\Users\\ultim\\Desktop\\" + "out.png"; // + s.nextLine() + ".png";
+        /* String ext = "";
         for(int i = path.length() - 1; path.charAt(i) != '.'; i--) {
             ext = path.charAt(i) + ext;
-        }
-        System.out.println("Extension: " + ext);
+        } */
+        // System.out.println("Extension: " + ext);
 
-        File f = new File(path);
-        File f_op = new File(op_path);
+        File f = new File(this.basefilepath);
+        File f_op = new File(this.outputfilepath);
         int height, width, max_payload;
         BufferedImage image = null;
         image = ImageIO.read(f);
         height = image.getHeight();
         width = image.getWidth();
         max_payload = (width * height * 3) / 8 * bits;
-        System.out.println("Height: " + height + ", Width: " + width + ", Max Payload: " + max_payload + " bytes, " + (float)(max_payload / 1024) + " KB, " + (float)(max_payload / (1024 * 1024)) + " MB");
+        // System.out.println("Height: " + height + ", Width: " + width + ", Max Payload: " + max_payload + " bytes, " + (float)(max_payload / 1024) + " KB, " + (float)(max_payload / (1024 * 1024)) + " MB");
 
         String message = "";
         int c;
-        System.out.print("Enter the message: ");
-        String ip_path = "C:\\Users\\ultim\\Desktop\\";
-        ip_path = "C:\\Users\\ultim\\Desktop\\sample.mp4";
-        File ip_file = new File(ip_path);
+        // System.out.print("Enter the message: ");
+        // String ip_path = "C:\\Users\\ultim\\Desktop\\";
+        // ip_path = "C:\\Users\\ultim\\Desktop\\samples\\sample.pdf";
+        File ip_file = new File(this.inputfilepath);
         FileInputStream file_reader = new FileInputStream(ip_file);
-        System.out.println(ip_file.exists());
-        System.out.println(ip_file.getName());
-        System.out.println(ip_file.length());
+        // System.out.println(ip_file.exists());
+        // System.out.println(ip_file.getName());
+        // System.out.println(ip_file.length());
 
         if(ip_file.length() > max_payload) {
-            System.out.println("File size too large!");
+            // System.out.println("File size too large!");
             s.close();
             file_reader.close();
             return 0;
@@ -57,7 +69,7 @@ public class Medium {
         // System.out.println(message.length());
 
         int msgsize = message.length();
-        System.out.println("Message length: " + msgsize + " (" + msgsize * 8 + ")");
+        // System.out.println("Message length: " + msgsize + " (" + msgsize * 8 + ")");
         byte[] len = new byte[4];
         len[3] = (byte) (msgsize & 255);
         len[2] = (byte) ((msgsize >> 8) & 255);
@@ -82,8 +94,8 @@ public class Medium {
             temp = len[i];
             binary += String.format("%08d", Integer.parseInt(Integer.toString((int)temp & 0xff, 2)));
         }
-        System.out.println("Padding: " + padding);
-        System.out.println(binary);
+        // System.out.println("Padding: " + padding);
+        // System.out.println(binary);
         for(int i = 0; i < msgsize; i++) {
             temp = (byte) message.charAt(i);
             binary += String.format("%08d", Integer.parseInt(Integer.toString((int)temp & 0xff, 2)));
@@ -93,7 +105,7 @@ public class Medium {
         }
         // System.out.println(binary.substring(33));
         msgsize = binary.length();
-        System.out.println("Message size in bits: " + msgsize);
+        // System.out.println("Message size in bits: " + msgsize);
 
         int a, r, g, b, new_r, new_g, new_b, bit1, bit2, bit3, pixel, new_pixel;
         int x = -1, y = 0;
@@ -107,7 +119,7 @@ public class Medium {
                 y += 1;
             }
             if(y >= height) {
-                System.out.println("Data Overflow");
+                // System.out.println("Data Overflow");
                 break;
             }
             pixel = image.getRGB(x, y);
@@ -166,13 +178,13 @@ public class Medium {
                 padding += 1;
             }
         }
-        System.out.println("Padding: " + padding);
+        // System.out.println("Padding: " + padding);
         int mask = 0;
 
         for(int i = 0; i < bits; i++) {
             mask = (mask << 1) + 1;
         }
-        System.out.println(Integer.toString(mask, 2));
+        // System.out.println(Integer.toString(mask, 2));
 
         for(int idx = 0; idx < 32 + padding; idx += (3 * bits)) {
             // System.out.print("(" + x + ", " + y + "): ");
@@ -183,7 +195,7 @@ public class Medium {
                 y += 1;
             }
             if(y >= height) {
-                System.out.println("Data Overflow");
+                // System.out.println("Data Overflow");
                 break;
             }
             pixel = image.getRGB(x, y);
@@ -208,9 +220,9 @@ public class Medium {
             msgsizeraw += String.format("%08d", Integer.parseInt(Integer.toString((int)bit3 & 0xff, 2))).substring(8 - bits);
         }
         // System.out.println(binary);
-        System.out.println(msgsizeraw);
-        System.out.print(msgsizeraw.substring(padding) + ": ");
-        System.out.println(Integer.parseInt(msgsizeraw.substring(padding), 2));
+        // System.out.println(msgsizeraw);
+        // System.out.print(msgsizeraw.substring(padding) + ": ");
+        // System.out.println(Integer.parseInt(msgsizeraw.substring(padding), 2));
         int msgsize = Integer.parseInt(msgsizeraw.substring(padding), 2) * 8;
         // System.out.println(msgsize);
         String binary = "";
@@ -223,7 +235,7 @@ public class Medium {
                 y += 1;
             }
             if(y >= height) {
-                System.out.println("Data Overflow");
+                // System.out.println("Data Overflow");
                 break;
             }
             pixel = image.getRGB(x, y);
@@ -259,9 +271,9 @@ public class Medium {
         file_writer2.write(msgsizeraw + binary);
         file_writer2.close(); */
     }
-    public static void main(String []args) throws IOException{
+    /* public static void main(String []args) throws IOException{
         Medium l = new Medium();
         l.lsb(4);
         l.read(4);
-    }
+    } */
 }
