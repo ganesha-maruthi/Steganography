@@ -23,7 +23,7 @@ public class Image {
         this.data = new Information();
     }
 
-    private int save_medium() throws IOException{
+    private int save_image() throws IOException{
         try {
             File f_op = new File(this.outputfilepath);
             ImageIO.write(image, "png", f_op);
@@ -35,7 +35,7 @@ public class Image {
         }
     }
 
-    private void load_medium() throws IOException {
+    private void load_image() throws IOException {
         File f = new File(this.basefilepath);
         image = ImageIO.read(f);
         height = image.getHeight();
@@ -43,7 +43,7 @@ public class Image {
     }
 
     public int lsb(int bits) throws IOException{
-        load_medium();
+        load_image();
         max_payload = (width * height * 3) / 8 * bits;
         this.data.load_from_file(this.inputfilepath);
 
@@ -89,11 +89,11 @@ public class Image {
             image.setRGB(x, y, new_pixel);
         }
 
-        return save_medium();
+        return save_image();
     }
 
     public void read(int bits) throws IOException{
-        load_medium();
+        load_image();
 
         String msgsizeraw = "";
         int r, g, b, bit1, bit2, bit3, pixel;
