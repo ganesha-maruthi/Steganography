@@ -42,7 +42,7 @@ public class Image {
         this.width = image.getWidth();
     }
 
-    public int lsb(int bits) throws IOException {
+    public int lsb(int bits, String username, String password) throws IOException {
         this.load_image();
         this.max_payload = (this.width * this.height * 3) / 8 * bits;
         this.data.load_from_file(this.inputfilepath);
@@ -50,6 +50,11 @@ public class Image {
         if(this.data.size > this.max_payload) {
             System.out.println("Data overload");
             return 0;
+        }
+
+        if(username != null) {
+            Driver.put(username, password);
+            this.data.message = Encrypt.EncryptText(username, password, this.data.message);
         }
 
         int msgsize = this.data.size;
@@ -92,7 +97,7 @@ public class Image {
         return this.save_image();
     }
 
-    public void read(int bits) throws IOException {
+    public void read(int bits, String username) throws IOException {
         this.load_image();
 
         String msgsizeraw = "";
@@ -164,6 +169,10 @@ public class Image {
             this.data.binary += String.format("%08d", Integer.parseInt(Integer.toString((int)bit3 & 0xff, 2))).substring(8 - bits);
         }
         byte[] msg = this.data.decode_from_binary();
+        if(username != null) {
+            String password = Driver.fetch(username);
+            msg = Decrypt.DecryptText(msg, password);
+        }
         this.data.save_to_file(this.outputfilepath, msg);
     }
 }

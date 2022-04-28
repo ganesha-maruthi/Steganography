@@ -19,7 +19,7 @@ public class Encrypt {
     private static final String EncryptionAlgorithm = "AES/GCM/NoPadding";
     private static final Charset UTF_8 = StandardCharsets.UTF_8;
     private static final int TagBitLen = 128;
-    public static byte[][] EncryptText(String Password,String Text) {
+    public static String EncryptText(String Username, String Password, String Text) {
         try {
 			// IV gen
 			byte iv[] = new byte[12];
@@ -34,7 +34,7 @@ public class Encrypt {
 			SecretKey secret = new SecretKeySpec(Factory.generateSecret(spec).getEncoded(), "AES");
 			
 			Cipher CipherObject = Cipher.getInstance(EncryptionAlgorithm);
-			CipherObject.init(Cipher.ENCRYPT_MODE, secret,new GCMParameterSpec(TagBitLen, iv));
+			CipherObject.init(Cipher.ENCRYPT_MODE, secret, new GCMParameterSpec(TagBitLen, iv));
 		
 			byte[] PlainText = Text.getBytes(UTF_8);
 			byte[] CipherText = CipherObject.doFinal(PlainText);
@@ -45,21 +45,20 @@ public class Encrypt {
 			.array();
 			
 			
-			byte[][] Return ;
+			/* byte[][] Return ;
 			Return = new byte[2][];
 			Return[0] = FinalCipherText;
-			Return[1] = secret.getEncoded();
+			Return[1] = secret.getEncoded(); */
 			
 			String x = Base64.getEncoder().encodeToString(FinalCipherText);
-			System.out.println("Cipher Text Generated :"+x);
-			return Return;
+			return x;
         }
         catch(Exception e){
 
-            byte[][] var;
-            var = new byte[2][];
-        	System.out.println("Error while Enc.. :"+e.toString());
-            return var;
+            // byte[][] var;
+            // var = new byte[2][];
+        	System.out.println("Error while Enc.. :" + e.toString());
+            return null;
         }
     }
 }

@@ -16,7 +16,7 @@ public class Decrypt {
     private static final String EncryptionAlgorithm = "AES/GCM/NoPadding";
     private static final Charset UTF_8 = StandardCharsets.UTF_8;
     private static final int TagBitLen = 128;
-    public static void DecryptText(byte[] CipherText,String UserName,String Password){
+    public static byte[] DecryptText(byte[] CipherText, String Password){
         try {
             ByteBuffer bb = ByteBuffer.wrap(CipherText);
             byte[] RecvIv = new byte[12];
@@ -36,11 +36,13 @@ public class Decrypt {
             cipher.init(Cipher.DECRYPT_MODE, secret2, new GCMParameterSpec(TagBitLen, RecvIv));
     
             byte[] plainText = cipher.doFinal(RecvCipherText);
-            String OP= new String(plainText, UTF_8);
-            System.out.println("Decrypted Cipher Text : "+OP);
+            // String OP = new String(plainText, UTF_8);
+            // System.out.println("Decrypted Cipher Text : " + OP);
+            return plainText;
         }
         catch(Exception e){
-            System.out.println("Error while Dec.. :"+e.toString());
+            System.out.println("Error while Dec.. :" + e.toString());
+            return null;
         }
    } 
 }

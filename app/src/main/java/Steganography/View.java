@@ -28,6 +28,9 @@ public class View extends javax.swing.JFrame {
 
         EncodeBitsButtonGroup = new javax.swing.ButtonGroup();
         DecodeBitsButtonGroup = new javax.swing.ButtonGroup();
+        EncodeInputTypeButtonGroup = new javax.swing.ButtonGroup();
+        EncodeEncryptionButtonGroup = new javax.swing.ButtonGroup();
+        DecodeEncryptionButtonGroup = new javax.swing.ButtonGroup();
         EncodeBaseFilePathLabel = new javax.swing.JLabel();
         EncodeBaseFilePathField = new javax.swing.JTextField();
         EncodeInputFilePathLabel = new javax.swing.JLabel();
@@ -58,13 +61,35 @@ public class View extends javax.swing.JFrame {
         DecodeBitsButton_1 = new javax.swing.JRadioButton();
         DecodeBitsButton_2 = new javax.swing.JRadioButton();
         DecodeBitsButton_3 = new javax.swing.JRadioButton();
+        EncodeBaseMediumTypeAudioButton = new javax.swing.JRadioButton();
+        EncodeBaseMediumTypeImageButton = new javax.swing.JRadioButton();
+        EncodeInputTypeDocumentButton = new javax.swing.JRadioButton();
+        EncodeInputTypeTextButton = new javax.swing.JRadioButton();
+        EncodeInputTypeWatermarkButton = new javax.swing.JRadioButton();
+        EncodeUsernameField = new javax.swing.JTextField();
+        EncodePasswordField = new javax.swing.JTextField();
+        EncodeUsernameLabel = new javax.swing.JLabel();
+        EncodePasswordLabel = new javax.swing.JLabel();
+        EncodeEncryptionYesButton = new javax.swing.JRadioButton();
+        EncodeEncryptionNoButton = new javax.swing.JRadioButton();
+        EncodeEncryptionLabel = new javax.swing.JLabel();
+        EncodeInputTypeLabel = new javax.swing.JLabel();
+        DecodeUsernameLabel = new javax.swing.JLabel();
+        DecodeUsernameField = new javax.swing.JTextField();
+        EncodeBaseMediumTypeLabel = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
+        DecodeBaseMediumTypeLabel = new javax.swing.JLabel();
+        DecodeBaseMediumTypeAudioButton = new javax.swing.JRadioButton();
+        DecodeBaseMediumTypeImageButton = new javax.swing.JRadioButton();
+        DecodeEncryptionLabel = new javax.swing.JLabel();
+        DecodeEncryptionYesButton = new javax.swing.JRadioButton();
+        DecodeEncryptionNoButton = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         EncodeBaseFilePathLabel.setText("Path to Base Medium:");
 
-        EncodeInputFilePathLabel.setText("Path to Input File:");
+        EncodeInputFilePathLabel.setText("Input:");
 
         EncodeBitsNumberLabel.setText("Number of bits of LSB:");
 
@@ -138,92 +163,187 @@ public class View extends javax.swing.JFrame {
         DecodeBitsButton_8.setText("8");
         DecodeBitsButton_8.setActionCommand("8");
 
+        EncodeBaseMediumTypeAudioButton.setText("Audio");
+
+        EncodeBaseMediumTypeImageButton.setText("Image");
+
+        EncodeInputTypeDocumentButton.setText("Document");
+
+        EncodeInputTypeTextButton.setText("Text");
+
+        EncodeInputTypeWatermarkButton.setText("Watermark");
+
+        EncodeUsernameLabel.setText("Username:");
+
+        EncodePasswordLabel.setText("Password:");
+
+        EncodeEncryptionYesButton.setText("Yes");
+
+        EncodeEncryptionNoButton.setText("No");
+
+        EncodeEncryptionLabel.setText("Encryption:");
+
+        EncodeInputTypeLabel.setText("Input type:");
+
+        DecodeUsernameLabel.setText("Username:");
+
+        EncodeBaseMediumTypeLabel.setText("Base Medium type:");
+
+        DecodeBaseMediumTypeLabel.setText("Stegano Medium type:");
+
+        DecodeBaseMediumTypeAudioButton.setText("Audio");
+
+        DecodeBaseMediumTypeImageButton.setText("Image");
+
+        DecodeEncryptionLabel.setText("Encryption:");
+
+        DecodeEncryptionYesButton.setText("Yes");
+
+        DecodeEncryptionNoButton.setText("No");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(DecodeOutputFilePathLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(DecodeBaseFilePathLabel)))
-                    .addComponent(EncodeOutputFilePathLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(EncodeInputFilePathLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(EncodeBaseFilePathLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(EncodeBaseFilePathField, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(EncodeInputFilePathField, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(EncodeOutputFilePathField)
-                    .addComponent(DecodeBaseFilePathField, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(DecodeOutputFilePathField, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(38, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(131, 131, 131)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(EncodeBitsNumberLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(34, 34, 34)
+                                    .addComponent(EncodeBitsButton_1)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(EncodeBitsButton_2)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(EncodeBitsButton_3)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(EncodeBitsButton_4)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(EncodeBitsButton_5)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(EncodeBitsButton_6)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(EncodeBitsButton_7)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(EncodeBitsButton_8))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(DecodeBaseFilePathLabel)
+                                                .addGap(427, 427, 427))
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addGroup(layout.createSequentialGroup()
+                                                    .addComponent(DecodeBaseMediumTypeAudioButton, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addGap(92, 92, 92)
+                                                    .addComponent(DecodeBaseMediumTypeImageButton, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addComponent(DecodeBaseFilePathField, javax.swing.GroupLayout.PREFERRED_SIZE, 409, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(DecodeBaseMediumTypeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(DecodeBitsNumberLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(DecodeEncryptionLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGap(28, 28, 28)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addGroup(layout.createSequentialGroup()
+                                                    .addComponent(DecodeEncryptionYesButton, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addGap(81, 81, 81)
+                                                    .addComponent(DecodeEncryptionNoButton, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGroup(layout.createSequentialGroup()
+                                                    .addComponent(DecodeBitsButton_1)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                    .addComponent(DecodeBitsButton_2)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                    .addComponent(DecodeBitsButton_3)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                    .addComponent(DecodeBitsButton_4)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                    .addComponent(DecodeBitsButton_5)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                    .addComponent(DecodeBitsButton_6)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                    .addComponent(DecodeBitsButton_7)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                    .addComponent(DecodeBitsButton_8))))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(DecodeOutputFilePathLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(DecodeUsernameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGap(18, 18, 18)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addComponent(DecodeOutputFilePathField)
+                                                .addComponent(DecodeUsernameField, javax.swing.GroupLayout.PREFERRED_SIZE, 417, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addGap(239, 239, 239)
+                                            .addComponent(DecodeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(EncodeOutputFilePathLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(EncodeInputFilePathLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                    .addComponent(EncodeEncryptionLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
+                                                    .addComponent(EncodePasswordLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                    .addComponent(EncodeUsernameLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                            .addComponent(EncodeInputTypeLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(EncodePasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 417, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addGroup(layout.createSequentialGroup()
+                                                    .addComponent(EncodeEncryptionYesButton, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addGap(96, 96, 96)
+                                                    .addComponent(EncodeEncryptionNoButton, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addComponent(EncodeInputFilePathField)
+                                                .addComponent(EncodeOutputFilePathField)
+                                                .addComponent(EncodeUsernameField, javax.swing.GroupLayout.PREFERRED_SIZE, 417, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(EncodeBaseFilePathLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(EncodeBaseMediumTypeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(EncodeBaseMediumTypeAudioButton, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(107, 107, 107)
+                                        .addComponent(EncodeBaseMediumTypeImageButton, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(EncodeBaseFilePathField, javax.swing.GroupLayout.PREFERRED_SIZE, 417, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(EncodeInputTypeTextButton)
+                                        .addGap(69, 69, 69)
+                                        .addComponent(EncodeInputTypeDocumentButton)
+                                        .addGap(72, 72, 72)
+                                        .addComponent(EncodeInputTypeWatermarkButton, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(EncodeBitsNumberLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(34, 34, 34)
-                        .addComponent(EncodeBitsButton_1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(EncodeBitsButton_2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(EncodeBitsButton_3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(EncodeBitsButton_4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(EncodeBitsButton_5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(EncodeBitsButton_6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(EncodeBitsButton_7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(EncodeBitsButton_8))
+                        .addGap(67, 67, 67)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 694, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addComponent(DecodeBitsNumberLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(28, 28, 28)
-                        .addComponent(DecodeBitsButton_1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(DecodeBitsButton_2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(DecodeBitsButton_3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(DecodeBitsButton_4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(DecodeBitsButton_5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(DecodeBitsButton_6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(DecodeBitsButton_7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(DecodeBitsButton_8))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 464, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(EncodeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(223, 223, 223))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(DecodeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(220, 220, 220))))
+                        .addGap(374, 374, 374)
+                        .addComponent(EncodeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(76, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(41, 41, 41)
+                .addGap(45, 45, 45)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(EncodeBaseMediumTypeAudioButton)
+                    .addComponent(EncodeBaseMediumTypeImageButton)
+                    .addComponent(EncodeBaseMediumTypeLabel))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(EncodeBaseFilePathField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(EncodeBaseFilePathLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(12, 12, 12)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(EncodeInputTypeLabel)
+                    .addComponent(EncodeInputTypeTextButton)
+                    .addComponent(EncodeInputTypeDocumentButton)
+                    .addComponent(EncodeInputTypeWatermarkButton))
+                .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(EncodeInputFilePathField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(EncodeInputFilePathLabel))
@@ -242,11 +362,29 @@ public class View extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(EncodeOutputFilePathField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(EncodeOutputFilePathLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(EncodeEncryptionLabel)
+                    .addComponent(EncodeEncryptionYesButton)
+                    .addComponent(EncodeEncryptionNoButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(EncodeUsernameLabel)
+                    .addComponent(EncodeUsernameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(EncodePasswordLabel)
+                    .addComponent(EncodePasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addComponent(EncodeButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(22, 22, 22)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(DecodeBaseMediumTypeLabel)
+                    .addComponent(DecodeBaseMediumTypeAudioButton)
+                    .addComponent(DecodeBaseMediumTypeImageButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(DecodeBaseFilePathField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(DecodeBaseFilePathLabel))
@@ -261,13 +399,22 @@ public class View extends javax.swing.JFrame {
                     .addComponent(DecodeBitsButton_6)
                     .addComponent(DecodeBitsButton_7)
                     .addComponent(DecodeBitsButton_8))
-                .addGap(10, 10, 10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(DecodeEncryptionLabel)
+                    .addComponent(DecodeEncryptionYesButton)
+                    .addComponent(DecodeEncryptionNoButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(DecodeUsernameLabel)
+                    .addComponent(DecodeUsernameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(DecodeOutputFilePathField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(DecodeOutputFilePathLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(DecodeButton)
-                .addGap(64, 64, 64))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         EncodeBitsButtonGroup.add(EncodeBitsButton_1);
@@ -288,13 +435,29 @@ public class View extends javax.swing.JFrame {
         DecodeBitsButtonGroup.add(DecodeBitsButton_7);
         DecodeBitsButtonGroup.add(DecodeBitsButton_8);
 
+        EncodeBaseMediumTypeButtonGroup.add(EncodeBaseMediumTypeAudioButton);
+        EncodeBaseMediumTypeButtonGroup.add(EncodeBaseMediumTypeImageButton);
+
+        DecodeBaseMediumTypeButtonGroup.add(DecodeBaseMediumTypeAudioButton);
+        DecodeBaseMediumTypeButtonGroup.add(DecodeBaseMediumTypeImageButton);
+
+        EncodeInputTypeButtonGroup.add(EncodeInputTypeTextButton);
+        EncodeInputTypeButtonGroup.add(EncodeInputTypeDocumentButton);
+        EncodeInputTypeButtonGroup.add(EncodeInputTypeWatermarkButton);
+
+        EncodeEncryptionButtonGroup.add(EncodeEncryptionYesButton);
+        EncodeEncryptionButtonGroup.add(EncodeEncryptionNoButton);
+
+        DecodeEncryptionButtonGroup.add(DecodeEncryptionYesButton);
+        DecodeEncryptionButtonGroup.add(DecodeEncryptionNoButton);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void EncodeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EncodeButtonActionPerformed
         try {
-            Image m = new Image(EncodeBaseFilePathField.getText(), EncodeInputFilePathField.getText(), EncodeOutputFilePathField.getText());
-            m.lsb(Integer.parseInt(EncodeBitsButtonGroup.getSelection().getActionCommand()));
+            // Image m = new Image(EncodeBaseFilePathField.getText(), EncodeInputFilePathField.getText(), EncodeOutputFilePathField.getText());
+            // m.lsb(Integer.parseInt(EncodeBitsButtonGroup.getSelection().getActionCommand()));
             javax.swing.JOptionPane.showMessageDialog(null, "Done!");
         }
         catch (Exception e) {
@@ -306,8 +469,8 @@ public class View extends javax.swing.JFrame {
 
     private void DecodeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DecodeButtonActionPerformed
         try {
-            Image m = new Image(DecodeBaseFilePathField.getText(), DecodeOutputFilePathField.getText());
-            m.read(Integer.parseInt(DecodeBitsButtonGroup.getSelection().getActionCommand()));
+            // Image m = new Image(DecodeBaseFilePathField.getText(), DecodeOutputFilePathField.getText());
+            // m.read(Integer.parseInt(DecodeBitsButtonGroup.getSelection().getActionCommand()));
             javax.swing.JOptionPane.showMessageDialog(null, "Done!");
         }
         catch (Exception e) {
@@ -359,6 +522,9 @@ public class View extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField DecodeBaseFilePathField;
     private javax.swing.JLabel DecodeBaseFilePathLabel;
+    private javax.swing.JRadioButton DecodeBaseMediumTypeAudioButton;
+    private javax.swing.JRadioButton DecodeBaseMediumTypeImageButton;
+    private javax.swing.JLabel DecodeBaseMediumTypeLabel;
     private javax.swing.JRadioButton DecodeBitsButton_1;
     private javax.swing.JRadioButton DecodeBitsButton_2;
     private javax.swing.JRadioButton DecodeBitsButton_3;
@@ -369,10 +535,18 @@ public class View extends javax.swing.JFrame {
     private javax.swing.JRadioButton DecodeBitsButton_8;
     private javax.swing.JLabel DecodeBitsNumberLabel;
     private javax.swing.JButton DecodeButton;
+    private javax.swing.JLabel DecodeEncryptionLabel;
+    private javax.swing.JRadioButton DecodeEncryptionNoButton;
+    private javax.swing.JRadioButton DecodeEncryptionYesButton;
     private javax.swing.JTextField DecodeOutputFilePathField;
     private javax.swing.JLabel DecodeOutputFilePathLabel;
+    private javax.swing.JTextField DecodeUsernameField;
+    private javax.swing.JLabel DecodeUsernameLabel;
     private javax.swing.JTextField EncodeBaseFilePathField;
     private javax.swing.JLabel EncodeBaseFilePathLabel;
+    private javax.swing.JRadioButton EncodeBaseMediumTypeAudioButton;
+    private javax.swing.JRadioButton EncodeBaseMediumTypeImageButton;
+    private javax.swing.JLabel EncodeBaseMediumTypeLabel;
     private javax.swing.JRadioButton EncodeBitsButton_1;
     private javax.swing.JRadioButton EncodeBitsButton_2;
     private javax.swing.JRadioButton EncodeBitsButton_3;
@@ -383,12 +557,28 @@ public class View extends javax.swing.JFrame {
     private javax.swing.JRadioButton EncodeBitsButton_8;
     private javax.swing.JLabel EncodeBitsNumberLabel;
     private javax.swing.JButton EncodeButton;
+    private javax.swing.JLabel EncodeEncryptionLabel;
+    private javax.swing.JRadioButton EncodeEncryptionNoButton;
+    private javax.swing.JRadioButton EncodeEncryptionYesButton;
     private javax.swing.JTextField EncodeInputFilePathField;
     private javax.swing.JLabel EncodeInputFilePathLabel;
+    private javax.swing.JRadioButton EncodeInputTypeDocumentButton;
+    private javax.swing.JLabel EncodeInputTypeLabel;
+    private javax.swing.JRadioButton EncodeInputTypeTextButton;
+    private javax.swing.JRadioButton EncodeInputTypeWatermarkButton;
     private javax.swing.JTextField EncodeOutputFilePathField;
     private javax.swing.JLabel EncodeOutputFilePathLabel;
+    private javax.swing.JTextField EncodePasswordField;
+    private javax.swing.JLabel EncodePasswordLabel;
+    private javax.swing.JTextField EncodeUsernameField;
+    private javax.swing.JLabel EncodeUsernameLabel;
     private javax.swing.ButtonGroup EncodeBitsButtonGroup;
     private javax.swing.ButtonGroup DecodeBitsButtonGroup;
+    private javax.swing.ButtonGroup EncodeBaseMediumTypeButtonGroup;
+    private javax.swing.ButtonGroup DecodeBaseMediumTypeButtonGroup;
+    private javax.swing.ButtonGroup EncodeInputTypeButtonGroup;
+    private javax.swing.ButtonGroup EncodeEncryptionButtonGroup;
+    private javax.swing.ButtonGroup DecodeEncryptionButtonGroup;
     private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables
 }

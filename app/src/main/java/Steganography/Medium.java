@@ -12,6 +12,8 @@ enum MediumType {
 public class Medium {
 	String basefilepath, inputfilepath, outputfilepath;
 	MediumType medium_type;
+	boolean encrypted = true;
+	String username = "johndoe", password = "randomtext";
 
     Medium(String basefilepath, String inputfilepath, String outputfilepath, MediumType medium_type) {
         this.basefilepath = basefilepath;
@@ -34,7 +36,7 @@ public class Medium {
 		}
 		else {
 			Image im = new Image(basefilepath, inputfilepath, outputfilepath);
-			return im.lsb(1);
+			return im.lsb(1, username, password);
 		}
 	}
 
@@ -45,7 +47,7 @@ public class Medium {
 		}
 		else {
 			Image im = new Image(basefilepath, outputfilepath);
-			im.read(bits);
+			im.read(bits, username);
 		}
 	}
 }

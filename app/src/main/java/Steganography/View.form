@@ -27,105 +27,184 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="DecodeOutputFilePathLabel" alignment="0" min="-2" pref="127" max="-2" attributes="0"/>
-                          <Component id="DecodeBaseFilePathLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <Component id="EncodeOutputFilePathLabel" alignment="0" min="-2" pref="127" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="EncodeInputFilePathLabel" max="32767" attributes="0"/>
-                      <Component id="EncodeBaseFilePathLabel" pref="127" max="32767" attributes="0"/>
-                  </Group>
-              </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="EncodeBaseFilePathField" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
-                  <Component id="EncodeInputFilePathField" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
-                  <Component id="EncodeOutputFilePathField" alignment="0" max="32767" attributes="0"/>
-                  <Component id="DecodeBaseFilePathField" alignment="0" min="-2" pref="302" max="-2" attributes="0"/>
-                  <Component id="DecodeOutputFilePathField" alignment="0" min="-2" pref="302" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace pref="38" max="32767" attributes="0"/>
-          </Group>
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="22" pref="22" max="-2" attributes="0"/>
-                      <Component id="EncodeBitsNumberLabel" min="-2" pref="127" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                      <Component id="EncodeBitsButton_1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="EncodeBitsButton_2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="EncodeBitsButton_3" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="EncodeBitsButton_4" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="EncodeBitsButton_5" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="EncodeBitsButton_6" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="EncodeBitsButton_7" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="EncodeBitsButton_8" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="131" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="EncodeBitsNumberLabel" min="-2" pref="127" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                                  <Component id="EncodeBitsButton_1" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="EncodeBitsButton_2" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="EncodeBitsButton_3" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="EncodeBitsButton_4" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="EncodeBitsButton_5" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="EncodeBitsButton_6" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="EncodeBitsButton_7" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="EncodeBitsButton_8" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <Component id="DecodeBaseFilePathLabel" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="427" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                                              <Group type="102" attributes="0">
+                                                  <Component id="DecodeBaseMediumTypeAudioButton" min="-2" pref="98" max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="92" max="-2" attributes="0"/>
+                                                  <Component id="DecodeBaseMediumTypeImageButton" min="-2" pref="98" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Component id="DecodeBaseFilePathField" min="-2" pref="409" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <Component id="DecodeBaseMediumTypeLabel" alignment="0" min="-2" pref="135" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="DecodeBitsNumberLabel" alignment="0" min="-2" pref="127" max="-2" attributes="0"/>
+                                              <Component id="DecodeEncryptedLabel" alignment="0" min="-2" pref="70" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Group type="102" attributes="0">
+                                                  <Component id="DecodeEncryptedYesButton" min="-2" pref="104" max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
+                                                  <Component id="DecodeEncryptedNoButton" min="-2" pref="104" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" attributes="0">
+                                                  <Component id="DecodeBitsButton_1" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Component id="DecodeBitsButton_2" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Component id="DecodeBitsButton_3" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Component id="DecodeBitsButton_4" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Component id="DecodeBitsButton_5" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Component id="DecodeBitsButton_6" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Component id="DecodeBitsButton_7" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Component id="DecodeBitsButton_8" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="DecodeOutputFilePathLabel" min="-2" pref="127" max="-2" attributes="0"/>
+                                              <Component id="DecodeUsernameLabel" min="-2" pref="78" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Component id="DecodeOutputFilePathField" max="32767" attributes="0"/>
+                                              <Component id="DecodeUsernameField" min="-2" pref="417" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="-2" pref="239" max="-2" attributes="0"/>
+                                          <Component id="DecodeButton" min="-2" pref="75" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="EncodeOutputFilePathLabel" alignment="0" min="-2" pref="127" max="-2" attributes="0"/>
+                                              <Component id="EncodeInputFilePathLabel" min="-2" pref="127" max="-2" attributes="0"/>
+                                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                                  <Component id="EncodeEncryptionLabel" alignment="0" pref="80" max="32767" attributes="0"/>
+                                                  <Component id="EncodePasswordLabel" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="EncodeUsernameLabel" alignment="0" max="32767" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                          <Component id="EncodeInputTypeLabel" alignment="0" min="-2" pref="80" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="EncodePasswordField" min="-2" pref="417" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Group type="102" attributes="0">
+                                                  <Component id="EncodeEncryptionYesButton" min="-2" pref="98" max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="96" max="-2" attributes="0"/>
+                                                  <Component id="EncodeEncryptionNoButton" min="-2" pref="98" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Component id="EncodeInputFilePathField" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="EncodeOutputFilePathField" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="EncodeUsernameField" min="-2" pref="417" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="EncodeBaseFilePathLabel" min="-2" pref="127" max="-2" attributes="0"/>
+                                  <Component id="EncodeBaseMediumTypeLabel" min="-2" pref="112" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="EncodeBaseMediumTypeAudioButton" min="-2" pref="98" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="107" max="-2" attributes="0"/>
+                                      <Component id="EncodeBaseMediumTypeImageButton" min="-2" pref="98" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="EncodeBaseFilePathField" min="-2" pref="417" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="EncodeInputTypeTextButton" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
+                                      <Component id="EncodeInputTypeDocumentButton" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
+                                      <Component id="EncodeInputTypeWatermarkButton" min="-2" pref="109" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                      </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="28" pref="28" max="-2" attributes="0"/>
-                      <Component id="DecodeBitsNumberLabel" min="-2" pref="127" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                      <Component id="DecodeBitsButton_1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="DecodeBitsButton_2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="DecodeBitsButton_3" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="DecodeBitsButton_4" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="DecodeBitsButton_5" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="DecodeBitsButton_6" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="DecodeBitsButton_7" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="DecodeBitsButton_8" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
+                      <Component id="jSeparator1" min="-2" pref="694" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="22" pref="22" max="-2" attributes="0"/>
-                      <Component id="jSeparator1" min="-2" pref="464" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-              <EmptySpace max="32767" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace min="-2" pref="374" max="-2" attributes="0"/>
                       <Component id="EncodeButton" min="-2" pref="75" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="223" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <Component id="DecodeButton" min="-2" pref="75" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="220" max="-2" attributes="0"/>
                   </Group>
               </Group>
+              <EmptySpace pref="76" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="EncodeBaseMediumTypeAudioButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="EncodeBaseMediumTypeImageButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="EncodeBaseMediumTypeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="EncodeBaseFilePathField" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="EncodeBaseFilePathLabel" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="EncodeInputTypeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="EncodeInputTypeTextButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="EncodeInputTypeDocumentButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="EncodeInputTypeWatermarkButton" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="EncodeInputFilePathField" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="EncodeInputFilePathLabel" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -147,11 +226,33 @@
                   <Component id="EncodeOutputFilePathField" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="EncodeOutputFilePathLabel" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="EncodeEncryptionLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="EncodeEncryptionYesButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="EncodeEncryptionNoButton" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="EncodeUsernameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="EncodeUsernameField" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="EncodePasswordLabel" min="-2" max="-2" attributes="0"/>
+                  <Component id="EncodePasswordField" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="EncodeButton" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="25" max="32767" attributes="0"/>
-              <Component id="jSeparator1" min="-2" pref="22" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+              <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="DecodeBaseMediumTypeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="DecodeBaseMediumTypeAudioButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="DecodeBaseMediumTypeImageButton" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="DecodeBaseFilePathField" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="DecodeBaseFilePathLabel" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -168,14 +269,25 @@
                   <Component id="DecodeBitsButton_7" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="DecodeBitsButton_8" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="DecodeEncryptedLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="DecodeEncryptedYesButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="DecodeEncryptedNoButton" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="DecodeUsernameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="DecodeUsernameField" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="DecodeOutputFilePathField" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="DecodeOutputFilePathLabel" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="DecodeButton" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
+              <EmptySpace pref="42" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -193,7 +305,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="EncodeInputFilePathLabel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Path to Input File:"/>
+        <Property name="text" type="java.lang.String" value="Input:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="EncodeInputFilePathField">
@@ -328,7 +440,108 @@
         <Property name="text" type="java.lang.String" value="3"/>
       </Properties>
     </Component>
+    <Component class="javax.swing.JRadioButton" name="EncodeBaseMediumTypeAudioButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Audio"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JRadioButton" name="EncodeBaseMediumTypeImageButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Image"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JRadioButton" name="EncodeInputTypeDocumentButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Document"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JRadioButton" name="EncodeInputTypeTextButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Text"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JRadioButton" name="EncodeInputTypeWatermarkButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Watermark"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="EncodeUsernameField">
+    </Component>
+    <Component class="javax.swing.JTextField" name="EncodePasswordField">
+    </Component>
+    <Component class="javax.swing.JLabel" name="EncodeUsernameLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Username:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="EncodePasswordLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Password:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JRadioButton" name="EncodeEncryptionYesButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Yes"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JRadioButton" name="EncodeEncryptionNoButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="No"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="EncodeEncryptionLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Encryption:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="EncodeInputTypeLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Input type:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="DecodeUsernameLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Username:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="DecodeUsernameField">
+    </Component>
+    <Component class="javax.swing.JLabel" name="EncodeBaseMediumTypeLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Base Medium type:"/>
+      </Properties>
+    </Component>
     <Component class="javax.swing.JSeparator" name="jSeparator1">
+    </Component>
+    <Component class="javax.swing.JLabel" name="DecodeBaseMediumTypeLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Stegano Medium type:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JRadioButton" name="DecodeBaseMediumTypeAudioButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Audio"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JRadioButton" name="DecodeBaseMediumTypeImageButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Image"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="DecodeEncryptedLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Encrypted:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JRadioButton" name="DecodeEncryptedYesButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Yes"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JRadioButton" name="DecodeEncryptedNoButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="No"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>
