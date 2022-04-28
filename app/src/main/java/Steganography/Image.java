@@ -53,38 +53,8 @@ public class Image {
         }
 
         int msgsize = this.data.size;
-        byte[] len = new byte[4];
-        len[3] = (byte) (msgsize & 255);
-        len[2] = (byte) ((msgsize >> 8) & 255);
-        len[1] = (byte) ((msgsize >> 16) & 255);
-        len[0] = (byte) ((msgsize >> 24) & 255);
-        String binary = "";
-        int padding = 1;
-        while(true) {
-            if((padding * 3 * bits) > 32) {
-                padding = (padding * 3 * bits) - 32;
-                break;
-            }
-            else {
-                padding += 1;
-            }
-        }
-        for(int i = 0; i < padding; i++) {
-            binary += '0';
-        }
-        byte temp;
-        for(int i = 0; i < 4; i++) {
-            temp = len[i];
-            binary += String.format("%08d", Integer.parseInt(Integer.toString((int)temp & 0xff, 2)));
-        }
-        for(int i = 0; i < msgsize; i++) {
-            temp = (byte) this.data.message.charAt(i);
-            binary += String.format("%08d", Integer.parseInt(Integer.toString((int)temp & 0xff, 2)));
-        }
-        while(binary.length() % (3 * bits) > 0) {
-            binary += '1';
-        }
-        msgsize = binary.length();
+        this.data.encode_binary(bits);        
+        msgsize = this.data.binary.length();
 
         int a, r, g, b, new_r, new_g, new_b, bit1, bit2, bit3, pixel, new_pixel;
         int x = -1, y = 0;
@@ -106,13 +76,13 @@ public class Image {
             g = (pixel >> 8) & 255;
             b = pixel & 255;
             
-            bit1 = Integer.parseInt(binary.substring(idx, idx + bits), 2);
+            bit1 = Integer.parseInt(this.data.binary.substring(idx, idx + bits), 2);
             new_r = ((r & (Integer.MAX_VALUE << bits)) | (bit1)) & 255;
 
-            bit2 = Integer.parseInt(binary.substring(idx + bits, idx + 2 * bits), 2);
+            bit2 = Integer.parseInt(this.data.binary.substring(idx + bits, idx + 2 * bits), 2);
             new_g = ((g & (Integer.MAX_VALUE << bits)) | (bit2)) & 255;
 
-            bit3 = Integer.parseInt(binary.substring(idx + 2 * bits, idx + 3 * bits), 2);
+            bit3 = Integer.parseInt(this.data.binary.substring(idx + 2 * bits, idx + 3 * bits), 2);
             new_b = ((b & (Integer.MAX_VALUE << bits)) | (bit3)) & 255;
 
             new_pixel = (a << 24) | (new_r << 16) | (new_g << 8) | new_b;
@@ -168,7 +138,7 @@ public class Image {
             msgsizeraw += String.format("%08d", Integer.parseInt(Integer.toString((int)bit3 & 0xff, 2))).substring(8 - bits);
         }
         int msgsize = Integer.parseInt(msgsizeraw.substring(padding), 2) * 8;
-        String binary = "";
+        this.data.size = msgsize / 8;
         for(int idx = 0; idx < msgsize; idx += (3 * bits)) {
             
             x += 1;
@@ -189,14 +159,11 @@ public class Image {
             bit2 = g & mask;
             bit3 = b & mask;
 
-            binary += String.format("%08d", Integer.parseInt(Integer.toString((int)bit1 & 0xff, 2))).substring(8 - bits);
-            binary += String.format("%08d", Integer.parseInt(Integer.toString((int)bit2 & 0xff, 2))).substring(8 - bits);
-            binary += String.format("%08d", Integer.parseInt(Integer.toString((int)bit3 & 0xff, 2))).substring(8 - bits);
+            this.data.binary += String.format("%08d", Integer.parseInt(Integer.toString((int)bit1 & 0xff, 2))).substring(8 - bits);
+            this.data.binary += String.format("%08d", Integer.parseInt(Integer.toString((int)bit2 & 0xff, 2))).substring(8 - bits);
+            this.data.binary += String.format("%08d", Integer.parseInt(Integer.toString((int)bit3 & 0xff, 2))).substring(8 - bits);
         }
-        byte[] msg = new byte[msgsize / 8];
-        for(int i = 0; i < msgsize / 8; i++) {
-            msg[i] = (byte) Integer.parseInt(binary.substring(i * 8, i * 8 + 8), 2);
-        }
+        byte[] msg = this.data.decode_from_binary();
         this.data.save_to_file(this.outputfilepath, msg);
     }
 }
