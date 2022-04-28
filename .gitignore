@@ -10,3 +10,10 @@ build
 run.bat
 
 .vscode
+
+# Ignore mp3, wav, pdf, txt, jpg
+**/*.mp3
+**/*.wav
+**/*.pdf
+**/*.txt
+**/*.jpg
