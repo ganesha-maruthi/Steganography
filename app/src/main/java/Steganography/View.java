@@ -28,6 +28,8 @@ public class View extends javax.swing.JFrame {
 
         EncodeBitsButtonGroup = new javax.swing.ButtonGroup();
         DecodeBitsButtonGroup = new javax.swing.ButtonGroup();
+        EncodeBaseMediumTypeButtonGroup = new javax.swing.ButtonGroup();
+        DecodeBaseMediumTypeButtonGroup = new javax.swing.ButtonGroup();
         EncodeInputTypeButtonGroup = new javax.swing.ButtonGroup();
         EncodeEncryptionButtonGroup = new javax.swing.ButtonGroup();
         DecodeEncryptionButtonGroup = new javax.swing.ButtonGroup();
@@ -164,22 +166,29 @@ public class View extends javax.swing.JFrame {
         DecodeBitsButton_8.setActionCommand("8");
 
         EncodeBaseMediumTypeAudioButton.setText("Audio");
+        EncodeBaseMediumTypeAudioButton.setActionCommand("audio");
 
         EncodeBaseMediumTypeImageButton.setText("Image");
+        EncodeBaseMediumTypeImageButton.setActionCommand("image");
 
         EncodeInputTypeDocumentButton.setText("Document");
+        EncodeInputTypeDocumentButton.setActionCommand("document");
 
         EncodeInputTypeTextButton.setText("Text");
+        EncodeInputTypeTextButton.setActionCommand("text");
 
         EncodeInputTypeWatermarkButton.setText("Watermark");
+        EncodeInputTypeWatermarkButton.setActionCommand("watermark");
 
         EncodeUsernameLabel.setText("Username:");
 
         EncodePasswordLabel.setText("Password:");
 
         EncodeEncryptionYesButton.setText("Yes");
+        EncodeEncryptionYesButton.setActionCommand("yes");
 
         EncodeEncryptionNoButton.setText("No");
+        EncodeEncryptionNoButton.setActionCommand("no");
 
         EncodeEncryptionLabel.setText("Encryption:");
 
@@ -192,14 +201,18 @@ public class View extends javax.swing.JFrame {
         DecodeBaseMediumTypeLabel.setText("Stegano Medium type:");
 
         DecodeBaseMediumTypeAudioButton.setText("Audio");
+        DecodeBaseMediumTypeAudioButton.setActionCommand("audio");
 
         DecodeBaseMediumTypeImageButton.setText("Image");
+        DecodeBaseMediumTypeImageButton.setActionCommand("image");
 
         DecodeEncryptionLabel.setText("Encryption:");
 
         DecodeEncryptionYesButton.setText("Yes");
+        DecodeEncryptionYesButton.setActionCommand("yes");
 
         DecodeEncryptionNoButton.setText("No");
+        DecodeEncryptionNoButton.setActionCommand("no");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -458,6 +471,22 @@ public class View extends javax.swing.JFrame {
         try {
             // Image m = new Image(EncodeBaseFilePathField.getText(), EncodeInputFilePathField.getText(), EncodeOutputFilePathField.getText());
             // m.lsb(Integer.parseInt(EncodeBitsButtonGroup.getSelection().getActionCommand()));
+            boolean encryption;
+            if(EncodeEncryptionButtonGroup.getSelection().getActionCommand() == "yes") {
+                encryption = true;
+            }
+            else {
+                encryption = false;
+            }
+            MediumType type;
+            if(EncodeBaseMediumTypeButtonGroup.getSelection().getActionCommand() == "audio") {
+                type = MediumType.audio;
+            }
+            else {
+                type = MediumType.image;
+            }
+            Medium m = new Medium(EncodeBaseFilePathField.getText(), EncodeInputFilePathField.getText(), EncodeOutputFilePathField.getText(), type, encryption);
+            m.lsb(Integer.parseInt(EncodeBitsButtonGroup.getSelection().getActionCommand()), EncodeUsernameField.getText(), EncodePasswordField.getText());
             javax.swing.JOptionPane.showMessageDialog(null, "Done!");
         }
         catch (Exception e) {
@@ -471,6 +500,22 @@ public class View extends javax.swing.JFrame {
         try {
             // Image m = new Image(DecodeBaseFilePathField.getText(), DecodeOutputFilePathField.getText());
             // m.read(Integer.parseInt(DecodeBitsButtonGroup.getSelection().getActionCommand()));
+            boolean encryption;
+            if(DecodeEncryptionButtonGroup.getSelection().getActionCommand() == "yes") {
+                encryption = true;
+            }
+            else {
+                encryption = false;
+            }
+            MediumType type;
+            if(DecodeBaseMediumTypeButtonGroup.getSelection().getActionCommand() == "audio") {
+                type = MediumType.audio;
+            }
+            else {
+                type = MediumType.image;
+            }
+            Medium m = new Medium(DecodeBaseFilePathField.getText(), DecodeOutputFilePathField.getText(), type, encryption);
+            m.read(Integer.parseInt(DecodeBitsButtonGroup.getSelection().getActionCommand()), DecodeUsernameField.getText());
             javax.swing.JOptionPane.showMessageDialog(null, "Done!");
         }
         catch (Exception e) {
