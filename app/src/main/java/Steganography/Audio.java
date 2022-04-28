@@ -14,16 +14,19 @@ public class Audio {
     byte[] audio_bytes;
     int header = 45;
     AudioInputStream audioInputStream;
+    Information data;
 
-    Audio(String basefilepath, String inputfilepath, String outputfilepath) {
+    Audio(String basefilepath, String inputfilepath, String outputfilepath) throws IOException {
         this.basefilepath = basefilepath;
         this.inputfilepath = inputfilepath;
         this.outputfilepath = outputfilepath;
+        this.data = new Information();
 }
 
-    Audio(String basefilepath, String outputfilepath) {
+    Audio(String basefilepath, String outputfilepath) throws IOException {
         this.basefilepath = basefilepath;
         this.outputfilepath = outputfilepath;
+        this.data = new Information();
     }
 
     private int load_audio() throws IOException, UnsupportedAudioFileException {
@@ -52,54 +55,19 @@ public class Audio {
     }
 
     public int lsb(int bits) throws IOException, UnsupportedAudioFileException{
-        Scanner s = new Scanner(System.in);
-
         load_audio();
+        this.data.load_from_file(this.inputfilepath);
 
-        String message = "";
-        int c;
-        File ip_file = new File(this.inputfilepath);
-        FileInputStream file_reader = new FileInputStream(ip_file);
-
-        if(ip_file.length() > audio_bytes.length) {
-            System.out.println("File size too large!");
-            s.close();
-            file_reader.close();
-            return 0;
-        }
-
-        while((c = file_reader.read()) != -1) {
-            message += (char) c;
-        }
-        file_reader.close();
-
-        int msgsize = message.length();
-        byte[] len = new byte[4];
-        len[3] = (byte) (msgsize & 255);
-        len[2] = (byte) ((msgsize >> 8) & 255);
-        len[1] = (byte) ((msgsize >> 16) & 255);
-        len[0] = (byte) ((msgsize >> 24) & 255);
-        
-        String binary = "";        
-        byte temp;
-        for(int i = 0; i < 4; i++) {
-            temp = len[i];
-            binary += String.format("%08d", Integer.parseInt(Integer.toString((int)temp & 0xff, 2)));
-        }
-        for(int i = 0; i < msgsize; i++) {
-            temp = (byte) message.charAt(i);
-            binary += String.format("%08d", Integer.parseInt(Integer.toString((int)temp & 0xff, 2)));
-        }
-        msgsize = binary.length();
+        this.data.encode_binary(1);
+        int msgsize = this.data.binary.length();
 
         int bit1;
 
         for(int idx = 0; idx < msgsize; idx++) {
-            bit1 = Integer.parseInt(binary.substring(idx, idx + 1), 2);
+            bit1 = Integer.parseInt(this.data.binary.substring(idx, idx + 1), 2);
             this.audio_bytes[this.header] = (byte) (((this.audio_bytes[this.header] & (Integer.MAX_VALUE << 1)) | (bit1)) & 255);
             this.header++;
         }
-        s.close();
         return save_audio();
     }
 
@@ -116,18 +84,12 @@ public class Audio {
             this.header++;
         }
         int msgsize = Integer.parseInt(msgsizeraw, 2) * 8;
-        String binary = "";
         for(int idx = 0; idx < msgsize; idx++) {
             bit1 = this.audio_bytes[this.header] & mask;
-            binary += String.format("%08d", Integer.parseInt(Integer.toString((int)bit1 & 0xff, 2))).substring(8 - bits);
+            this.data.binary += String.format("%08d", Integer.parseInt(Integer.toString((int)bit1 & 0xff, 2))).substring(8 - bits);
             this.header++;
         }
-        byte[] msg = new byte[msgsize / 8];
-        for(int i = 0; i < msgsize / 8; i++) {
-            msg[i] = (byte) Integer.parseInt(binary.substring(i * 8, i * 8 + 8), 2);
-        }
-        FileOutputStream file_writer = new FileOutputStream(this.outputfilepath);
-        file_writer.write(msg);
-        file_writer.close();
+        byte[] msg = this.data.decode_from_binary();
+        this.data.save_to_file(this.outputfilepath, msg);
     }
 }

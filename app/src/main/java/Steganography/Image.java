@@ -52,14 +52,13 @@ public class Image {
             return 0;
         }
 
-        if(username != null) {
+        if(username.length() > 0) {
             Driver.put(username, password);
             this.data.message = Encrypt.EncryptText(username, password, this.data.message);
         }
 
-        int msgsize = this.data.size;
         this.data.encode_binary(bits);        
-        msgsize = this.data.binary.length();
+        int msgsize = this.data.binary.length();
 
         int a, r, g, b, new_r, new_g, new_b, bit1, bit2, bit3, pixel, new_pixel;
         int x = -1, y = 0;
