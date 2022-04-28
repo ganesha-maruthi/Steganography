@@ -8,16 +8,19 @@ public class Image {
     String basefilepath, inputfilepath, outputfilepath;
     BufferedImage image;
     int height, width, max_payload;
+    Information data;
 
-    Image(String basefilepath, String inputfilepath, String outputfilepath) {
+    Image(String basefilepath, String inputfilepath, String outputfilepath) throws IOException {
         this.basefilepath = basefilepath;
         this.inputfilepath = inputfilepath;
         this.outputfilepath = outputfilepath;
+        this.data = new Information();
     }
 
-    Image(String basefilepath, String outputfilepath) {
+    Image(String basefilepath, String outputfilepath) throws IOException {
         this.basefilepath = basefilepath;
         this.outputfilepath = outputfilepath;
+        this.data = new Information();
     }
 
     private int save_medium() throws IOException{
@@ -42,23 +45,14 @@ public class Image {
     public int lsb(int bits) throws IOException{
         load_medium();
         max_payload = (width * height * 3) / 8 * bits;
+        this.data.load_from_file(this.inputfilepath);
 
-        String message = "";
-        int c;
-        File ip_file = new File(this.inputfilepath);
-        FileInputStream file_reader = new FileInputStream(ip_file);
-
-        if(ip_file.length() > max_payload) {
-            file_reader.close();
+        if(this.data.size > this.max_payload) {
+            System.out.println("Data overload");
             return 0;
         }
 
-        while((c = file_reader.read()) != -1) {
-            message += (char) c;
-        }
-        file_reader.close();
-
-        int msgsize = message.length();
+        int msgsize = this.data.size;
         byte[] len = new byte[4];
         len[3] = (byte) (msgsize & 255);
         len[2] = (byte) ((msgsize >> 8) & 255);
@@ -84,7 +78,7 @@ public class Image {
             binary += String.format("%08d", Integer.parseInt(Integer.toString((int)temp & 0xff, 2)));
         }
         for(int i = 0; i < msgsize; i++) {
-            temp = (byte) message.charAt(i);
+            temp = (byte) this.data.message.charAt(i);
             binary += String.format("%08d", Integer.parseInt(Integer.toString((int)temp & 0xff, 2)));
         }
         while(binary.length() % (3 * bits) > 0) {
@@ -203,8 +197,6 @@ public class Image {
         for(int i = 0; i < msgsize / 8; i++) {
             msg[i] = (byte) Integer.parseInt(binary.substring(i * 8, i * 8 + 8), 2);
         }
-        FileOutputStream file_writer = new FileOutputStream(this.outputfilepath);
-        file_writer.write(msg);
-        file_writer.close();
+        this.data.save_to_file(this.outputfilepath, msg);
     }
 }
