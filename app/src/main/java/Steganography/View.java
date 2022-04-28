@@ -293,12 +293,12 @@ public class View extends javax.swing.JFrame {
 
     private void EncodeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EncodeButtonActionPerformed
         try {
-            Medium m = new Medium(EncodeBaseFilePathField.getText(), EncodeInputFilePathField.getText(), EncodeOutputFilePathField.getText());
+            Image m = new Image(EncodeBaseFilePathField.getText(), EncodeInputFilePathField.getText(), EncodeOutputFilePathField.getText());
             m.lsb(Integer.parseInt(EncodeBitsButtonGroup.getSelection().getActionCommand()));
             javax.swing.JOptionPane.showMessageDialog(null, "Done!");
         }
         catch (Exception e) {
-            System.out.println(e.getStackTrace());
+            e.printStackTrace();
             javax.swing.JOptionPane.showMessageDialog(null, "Error!");
         }
 
@@ -306,12 +306,12 @@ public class View extends javax.swing.JFrame {
 
     private void DecodeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DecodeButtonActionPerformed
         try {
-            Medium m = new Medium(DecodeBaseFilePathField.getText(), DecodeOutputFilePathField.getText());
+            Image m = new Image(DecodeBaseFilePathField.getText(), DecodeOutputFilePathField.getText());
             m.read(Integer.parseInt(DecodeBitsButtonGroup.getSelection().getActionCommand()));
             javax.swing.JOptionPane.showMessageDialog(null, "Done!");
         }
         catch (Exception e) {
-            System.out.println(e.getStackTrace());
+            e.printStackTrace();
             javax.swing.JOptionPane.showMessageDialog(null, "Error!");
         }
     }//GEN-LAST:event_DecodeButtonActionPerformed
