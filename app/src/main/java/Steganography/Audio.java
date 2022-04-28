@@ -54,9 +54,14 @@ public class Audio {
         return 1;
     }
 
-    public int lsb(int bits) throws IOException, UnsupportedAudioFileException{
+    public int lsb(int bits, String username, String password) throws IOException, UnsupportedAudioFileException{
         load_audio();
         this.data.load_from_file(this.inputfilepath);
+
+        if(username.length() > 0) {
+            Driver.put(username, password);
+            this.data.message = Encrypt.EncryptText(username, password, this.data.message);
+        }
 
         this.data.encode_binary(1);
         int msgsize = this.data.binary.length();
@@ -71,7 +76,7 @@ public class Audio {
         return save_audio();
     }
 
-    public void read(int bits) throws IOException, UnsupportedAudioFileException{
+    public void read(int bits, String username) throws IOException, UnsupportedAudioFileException{
         load_audio();
 
         String msgsizeraw = "";
@@ -90,6 +95,10 @@ public class Audio {
             this.header++;
         }
         byte[] msg = this.data.decode_from_binary();
+        if(username != null) {
+            String password = Driver.fetch(username);
+            msg = Decrypt.DecryptText(msg, password);
+        }
         this.data.save_to_file(this.outputfilepath, msg);
     }
 }
