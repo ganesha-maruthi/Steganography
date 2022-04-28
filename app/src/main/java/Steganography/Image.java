@@ -23,10 +23,10 @@ public class Image {
         this.data = new Information();
     }
 
-    private int save_image() throws IOException{
+    private int save_image() throws IOException {
         try {
             File f_op = new File(this.outputfilepath);
-            ImageIO.write(image, "png", f_op);
+            ImageIO.write(this.image, "png", f_op);
             return 1;
         }
         catch(Exception e) {
@@ -37,14 +37,14 @@ public class Image {
 
     private void load_image() throws IOException {
         File f = new File(this.basefilepath);
-        image = ImageIO.read(f);
-        height = image.getHeight();
-        width = image.getWidth();
+        this.image = ImageIO.read(f);
+        this.height = image.getHeight();
+        this.width = image.getWidth();
     }
 
-    public int lsb(int bits) throws IOException{
-        load_image();
-        max_payload = (width * height * 3) / 8 * bits;
+    public int lsb(int bits) throws IOException {
+        this.load_image();
+        this.max_payload = (this.width * this.height * 3) / 8 * bits;
         this.data.load_from_file(this.inputfilepath);
 
         if(this.data.size > this.max_payload) {
@@ -62,14 +62,14 @@ public class Image {
         for(int idx = 0; idx < msgsize; idx += (3 * bits)) {
             
             x += 1;
-            if(x >= width) {
+            if(x >= this.width) {
                 x = 0;
                 y += 1;
             }
-            if(y >= height) {
+            if(y >= this.height) {
                 break;
             }
-            pixel = image.getRGB(x, y);
+            pixel = this.image.getRGB(x, y);
 
             a = (pixel >> 24) & 255;
             r = (pixel >> 16) & 255;
@@ -86,14 +86,14 @@ public class Image {
             new_b = ((b & (Integer.MAX_VALUE << bits)) | (bit3)) & 255;
 
             new_pixel = (a << 24) | (new_r << 16) | (new_g << 8) | new_b;
-            image.setRGB(x, y, new_pixel);
+            this.image.setRGB(x, y, new_pixel);
         }
 
-        return save_image();
+        return this.save_image();
     }
 
-    public void read(int bits) throws IOException{
-        load_image();
+    public void read(int bits) throws IOException {
+        this.load_image();
 
         String msgsizeraw = "";
         int r, g, b, bit1, bit2, bit3, pixel;
@@ -116,14 +116,14 @@ public class Image {
 
         for(int idx = 0; idx < 32 + padding; idx += (3 * bits)) {
             x += 1;
-            if(x >= width) {
+            if(x >= this.width) {
                 x = 0;
                 y += 1;
             }
-            if(y >= height) {
+            if(y >= this.height) {
                 break;
             }
-            pixel = image.getRGB(x, y);
+            pixel = this.image.getRGB(x, y);
 
             r = (pixel >> 16) & 255;
             g = (pixel >> 8) & 255;
@@ -142,14 +142,14 @@ public class Image {
         for(int idx = 0; idx < msgsize; idx += (3 * bits)) {
             
             x += 1;
-            if(x >= width) {
+            if(x >= this.width) {
                 x = 0;
                 y += 1;
             }
-            if(y >= height) {
+            if(y >= this.height) {
                 break;
             }
-            pixel = image.getRGB(x, y);
+            pixel = this.image.getRGB(x, y);
 
             r = (pixel >> 16) & 255;
             g = (pixel >> 8) & 255;
