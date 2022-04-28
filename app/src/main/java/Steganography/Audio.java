@@ -11,29 +11,50 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 
 public class Audio {
     String basefilepath, inputfilepath, outputfilepath;
+    byte[] audio_bytes;
+    int header = 45;
+    AudioInputStream audioInputStream;
 
     Audio(String basefilepath, String inputfilepath, String outputfilepath) {
         this.basefilepath = basefilepath;
         this.inputfilepath = inputfilepath;
         this.outputfilepath = outputfilepath;
-    }
+}
 
     Audio(String basefilepath, String outputfilepath) {
         this.basefilepath = basefilepath;
         this.outputfilepath = outputfilepath;
     }
 
+    private int load_audio() throws IOException, UnsupportedAudioFileException {
+        File audioFile = new File(this.basefilepath);
+        this.audioInputStream = AudioSystem.getAudioInputStream(audioFile);
+        int n = (int) audioFile.length();
+        this.audio_bytes = new byte[n];
+        this.audio_bytes = audioInputStream.readAllBytes();
+        return 0;
+    }
+
+    private int save_audio() throws IOException, UnsupportedAudioFileException {
+        File file_out = new File(this.outputfilepath);
+		ByteArrayInputStream byte_is = new ByteArrayInputStream(audio_bytes);
+		AudioInputStream audio_is = new AudioInputStream(byte_is, this.audioInputStream.getFormat(), this.audioInputStream.getFrameLength());
+		if (AudioSystem.isFileTypeSupported(AudioFileFormat.Type.WAVE, audio_is)) {
+			try {
+				AudioSystem.write(audio_is, AudioFileFormat.Type.WAVE, file_out);
+			} catch (Exception e) {
+                e.printStackTrace();
+				System.err.println("Sound File write error");
+                return 0;
+			}
+		}
+        return 1;
+    }
+
     public int lsb(int bits) throws IOException, UnsupportedAudioFileException{
         Scanner s = new Scanner(System.in);
 
-        File audioFile = new File(this.basefilepath);
-        AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(audioFile);
-
-        int n = (int) audioFile.length();
-
-        byte[] audio_bytes = new byte[n];
-
-        audio_bytes = audioInputStream.readAllBytes();
+        load_audio();
 
         String message = "";
         int c;
@@ -71,62 +92,38 @@ public class Audio {
         }
         msgsize = binary.length();
 
-        int bit1, i = 45;
+        int bit1;
 
         for(int idx = 0; idx < msgsize; idx++) {
             bit1 = Integer.parseInt(binary.substring(idx, idx + 1), 2);
-            audio_bytes[i] = (byte) (((audio_bytes[i] & (Integer.MAX_VALUE << 1)) | (bit1)) & 255);
-            i++;
+            this.audio_bytes[this.header] = (byte) (((this.audio_bytes[this.header] & (Integer.MAX_VALUE << 1)) | (bit1)) & 255);
+            this.header++;
         }
-        System.out.println(audioInputStream.getFormat());
-        File fileOut = new File(this.outputfilepath);
-		ByteArrayInputStream byteIS = new ByteArrayInputStream(audio_bytes);
-		AudioInputStream audioIS = new AudioInputStream(byteIS,
-				audioInputStream.getFormat(), audioInputStream.getFrameLength());
-		if (AudioSystem.isFileTypeSupported(AudioFileFormat.Type.WAVE, audioIS)) {
-			try {
-				AudioSystem.write(audioIS, AudioFileFormat.Type.WAVE, fileOut);
-				System.out.println("Steganographed AU file is written as "
-						+ this.outputfilepath + "...");
-			} catch (Exception e) {
-				System.err.println("Sound File write error");
-			}
-		}
         s.close();
-        return 1;
+        return save_audio();
     }
 
     public void read(int bits) throws IOException, UnsupportedAudioFileException{
-        File f = new File(this.basefilepath);
-        
-        AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(f);
-
-        int bytes_per_frame = audioInputStream.getFormat().getFrameSize();
-        
-        int n = bytes_per_frame;
-
-        byte[] audio_bytes = new byte[n];
-
-        audio_bytes = audioInputStream.readAllBytes();
+        load_audio();
 
         String msgsizeraw = "";
-        int i = 45, bit1;
+        int bit1;
         int mask = 1;
 
         for(int idx = 0; idx < 32; idx++) {
-            bit1 = audio_bytes[i] & mask;
+            bit1 = this.audio_bytes[this.header] & mask;
             msgsizeraw += String.format("%08d", Integer.parseInt(Integer.toString((int)bit1 & 0xff, 2))).substring(8 - bits);
-            i++;
+            this.header++;
         }
         int msgsize = Integer.parseInt(msgsizeraw, 2) * 8;
         String binary = "";
         for(int idx = 0; idx < msgsize; idx++) {
-            bit1 = audio_bytes[i] & mask;
+            bit1 = this.audio_bytes[this.header] & mask;
             binary += String.format("%08d", Integer.parseInt(Integer.toString((int)bit1 & 0xff, 2))).substring(8 - bits);
-            i++;
+            this.header++;
         }
         byte[] msg = new byte[msgsize / 8];
-        for(i = 0; i < msgsize / 8; i++) {
+        for(int i = 0; i < msgsize / 8; i++) {
             msg[i] = (byte) Integer.parseInt(binary.substring(i * 8, i * 8 + 8), 2);
         }
         FileOutputStream file_writer = new FileOutputStream(this.outputfilepath);
