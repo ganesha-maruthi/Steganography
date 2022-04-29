@@ -54,10 +54,11 @@ public class Image {
 
         if(username.length() > 0) {
             Driver.put(username, password);
-            this.data.message = Encrypt.EncryptText(username, password, this.data.message);
+            this.data.message_bytes = Encrypt.EncryptText(password, this.data.message);
+            this.data.size = this.data.message_bytes.length;
         }
 
-        this.data.encode_binary(bits, true);        
+        this.data.encode_binary(bits, true, username.length() > 0);        
         int msgsize = this.data.binary.length();
 
         int a, r, g, b, new_r, new_g, new_b, bit1, bit2, bit3, pixel, new_pixel;

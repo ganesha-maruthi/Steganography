@@ -11,6 +11,7 @@ enum InformationType {
 public class Information {
 	InformationType type;
 	String message, binary;
+    byte[] message_bytes;
 	int size;
 
 	Information() throws IOException {
@@ -42,13 +43,15 @@ public class Information {
 		}
 	}
 
-	public void encode_binary(int bits, boolean need_padding) {
+	public void encode_binary(int bits, boolean need_padding, boolean enc) {
+        
 		byte[] len = new byte[4];
         len[3] = (byte) (this.size & 255);
         len[2] = (byte) ((this.size >> 8) & 255);
         len[1] = (byte) ((this.size >> 16) & 255);
         len[0] = (byte) ((this.size >> 24) & 255);
         int padding = 1;
+
         if(need_padding)
         {
             while(true) {
@@ -65,15 +68,26 @@ public class Information {
                 this.binary += '0';
             }
         }
+        
         byte temp;
         for(int i = 0; i < 4; i++) {
             temp = len[i];
             this.binary += String.format("%08d", Integer.parseInt(Integer.toString((int)temp & 0xff, 2)));
         }
-        for(int i = 0; i < this.size; i++) {
-            temp = (byte) this.message.charAt(i);
-            this.binary += String.format("%08d", Integer.parseInt(Integer.toString((int)temp & 0xff, 2)));
+
+        if(enc) {
+            for(int i = 0; i < this.size; i++) {
+                temp = this.message_bytes[i];
+                this.binary += String.format("%08d", Integer.parseInt(Integer.toString((int)temp & 0xff, 2)));
+            }
         }
+        else {
+            for(int i = 0; i < this.size; i++) {
+                temp = (byte) this.message.charAt(i);
+                this.binary += String.format("%08d", Integer.parseInt(Integer.toString((int)temp & 0xff, 2)));
+            }
+        }
+
         if(need_padding)
         {
             while(this.binary.length() % (3 * bits) > 0) {

@@ -19,7 +19,7 @@ public class Encrypt {
     private static final String EncryptionAlgorithm = "AES/GCM/NoPadding";
     private static final Charset UTF_8 = StandardCharsets.UTF_8;
     private static final int TagBitLen = 128;
-    public static String EncryptText(String Username, String Password, String Text) {
+    public static byte[] EncryptText(String Password, String Text) {
         try {
 			// IV gen
 			byte iv[] = new byte[12];
@@ -43,15 +43,8 @@ public class Encrypt {
 			.put(Salt)
 			.put(CipherText)
 			.array();
+			return FinalCipherText;
 			
-			
-			/* byte[][] Return ;
-			Return = new byte[2][];
-			Return[0] = FinalCipherText;
-			Return[1] = secret.getEncoded(); */
-			
-			String x = Base64.getEncoder().encodeToString(FinalCipherText);
-			return x;
         }
         catch(Exception e){
 
