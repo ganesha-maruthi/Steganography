@@ -19,12 +19,14 @@ public class Medium {
         this.inputfilepath = inputfilepath;
         this.outputfilepath = outputfilepath;
 		this.medium_type = medium_type;
+		this.encrypted = encrypted;
     }
 
     Medium(String basefilepath, String outputfilepath, MediumType medium_type, boolean encrypted) {
         this.basefilepath = basefilepath;
         this.outputfilepath = outputfilepath;
 		this.medium_type = medium_type;
+		this.encrypted = encrypted;
     }
 
 	public int lsb(int bits, String username, String password) throws IOException, UnsupportedAudioFileException {
@@ -34,7 +36,7 @@ public class Medium {
 		}
 		else {
 			Image im = new Image(basefilepath, inputfilepath, outputfilepath);
-			return im.lsb(1, username, password);
+			return im.lsb(bits, username, password);
 		}
 	}
 

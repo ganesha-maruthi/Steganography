@@ -63,7 +63,7 @@ public class Audio {
             this.data.message = Encrypt.EncryptText(username, password, this.data.message);
         }
 
-        this.data.encode_binary(1);
+        this.data.encode_binary(1, false);
         int msgsize = this.data.binary.length();
 
         int bit1;
@@ -89,13 +89,14 @@ public class Audio {
             this.header++;
         }
         int msgsize = Integer.parseInt(msgsizeraw, 2) * 8;
+        this.data.size = msgsize / 8;
         for(int idx = 0; idx < msgsize; idx++) {
             bit1 = this.audio_bytes[this.header] & mask;
             this.data.binary += String.format("%08d", Integer.parseInt(Integer.toString((int)bit1 & 0xff, 2))).substring(8 - bits);
             this.header++;
         }
         byte[] msg = this.data.decode_from_binary();
-        if(username != null) {
+        if(username.length() > 0) {
             String password = Driver.fetch(username);
             msg = Decrypt.DecryptText(msg, password);
         }

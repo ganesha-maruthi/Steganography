@@ -57,7 +57,7 @@ public class Image {
             this.data.message = Encrypt.EncryptText(username, password, this.data.message);
         }
 
-        this.data.encode_binary(bits);        
+        this.data.encode_binary(bits, true);        
         int msgsize = this.data.binary.length();
 
         int a, r, g, b, new_r, new_g, new_b, bit1, bit2, bit3, pixel, new_pixel;
@@ -168,7 +168,7 @@ public class Image {
             this.data.binary += String.format("%08d", Integer.parseInt(Integer.toString((int)bit3 & 0xff, 2))).substring(8 - bits);
         }
         byte[] msg = this.data.decode_from_binary();
-        if(username != null) {
+        if(username.length() > 0) {
             String password = Driver.fetch(username);
             msg = Decrypt.DecryptText(msg, password);
         }

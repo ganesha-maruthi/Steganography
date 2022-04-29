@@ -42,24 +42,28 @@ public class Information {
 		}
 	}
 
-	public void encode_binary(int bits) {
+	public void encode_binary(int bits, boolean need_padding) {
 		byte[] len = new byte[4];
         len[3] = (byte) (this.size & 255);
         len[2] = (byte) ((this.size >> 8) & 255);
         len[1] = (byte) ((this.size >> 16) & 255);
         len[0] = (byte) ((this.size >> 24) & 255);
         int padding = 1;
-        while(true) {
-            if((padding * 3 * bits) > 32) {
-                padding = (padding * 3 * bits) - 32;
-                break;
+        if(need_padding)
+        {
+            while(true) {
+                if((padding * 3 * bits) > 32) {
+                    padding = (padding * 3 * bits) - 32;
+                    break;
+                }
+                else {
+                    padding += 1;
+                }
             }
-            else {
-                padding += 1;
+        
+            for(int i = 0; i < padding; i++) {
+                this.binary += '0';
             }
-        }
-        for(int i = 0; i < padding; i++) {
-            this.binary += '0';
         }
         byte temp;
         for(int i = 0; i < 4; i++) {
@@ -70,8 +74,11 @@ public class Information {
             temp = (byte) this.message.charAt(i);
             this.binary += String.format("%08d", Integer.parseInt(Integer.toString((int)temp & 0xff, 2)));
         }
-        while(this.binary.length() % (3 * bits) > 0) {
-            this.binary += '1';
+        if(need_padding)
+        {
+            while(this.binary.length() % (3 * bits) > 0) {
+                this.binary += '1';
+            }
         }
 	}
 
