@@ -73,7 +73,7 @@ public class Audio {
             this.data.size = this.data.message_bytes.length;
         }
 
-        this.data.encode_binary(bits, true, username.length() > 0);        
+        this.data.encode_binary(1, false, username.length() > 0);        
         int msgsize = this.data.binary.length();
 
         int bit1;
