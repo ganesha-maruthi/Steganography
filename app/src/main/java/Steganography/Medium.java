@@ -29,14 +29,14 @@ public class Medium {
 		this.encrypted = encrypted;
     }
 
-	public int lsb(int bits, String username, String password) throws IOException, UnsupportedAudioFileException {
+	public int lsb(int bits, String username, String password, String Type) throws IOException, UnsupportedAudioFileException {
 		if(this.medium_type == MediumType.audio) {
 			Audio au = new Audio(basefilepath, inputfilepath, outputfilepath);
-			return au.lsb(1, username, password);
+			return au.lsb(1, username, password, Type);
 		}
 		else {
 			Image im = new Image(basefilepath, inputfilepath, outputfilepath);
-			return im.lsb(bits, username, password);
+			return im.lsb(bits, username, password, Type);
 		}
 	}
 

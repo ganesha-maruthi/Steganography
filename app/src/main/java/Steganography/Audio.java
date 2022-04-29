@@ -54,9 +54,18 @@ public class Audio {
         return 1;
     }
 
-    public int lsb(int bits, String username, String password) throws IOException, UnsupportedAudioFileException{
+    public int lsb(int bits, String username, String password, String Type) throws IOException, UnsupportedAudioFileException{
         load_audio();
-        this.data.load_from_file(this.inputfilepath);
+        if(Type == "document"){
+            this.data.type = InformationType.document;
+            this.data.load_from_file(this.inputfilepath);
+        }
+
+        else {
+            this.data.type = InformationType.text;
+            this.data.size = this.inputfilepath.length();
+            this.data.message = this.inputfilepath;
+        }
 
         if(username.length() > 0) {
             Driver.put(username, password);

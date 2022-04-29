@@ -42,10 +42,20 @@ public class Image {
         this.width = image.getWidth();
     }
 
-    public int lsb(int bits, String username, String password) throws IOException {
+    public int lsb(int bits, String username, String password, String Type) throws IOException {
         this.load_image();
         this.max_payload = (this.width * this.height * 3) / 8 * bits;
-        this.data.load_from_file(this.inputfilepath);
+        
+        if(Type == "document"){
+            this.data.type = InformationType.document;
+            this.data.load_from_file(this.inputfilepath);
+        }
+
+        else {
+            this.data.type = InformationType.text;
+            this.data.size = this.inputfilepath.length();
+            this.data.message = this.inputfilepath;
+        }
 
         if(this.data.size > this.max_payload) {
             System.out.println("Data overload");

@@ -486,7 +486,7 @@ public class View extends javax.swing.JFrame {
                 type = MediumType.image;
             }
             Medium m = new Medium(EncodeBaseFilePathField.getText(), EncodeInputFilePathField.getText(), EncodeOutputFilePathField.getText(), type, encryption);
-            m.lsb(Integer.parseInt(EncodeBitsButtonGroup.getSelection().getActionCommand()), EncodeUsernameField.getText(), EncodePasswordField.getText());
+            m.lsb(Integer.parseInt(EncodeBitsButtonGroup.getSelection().getActionCommand()), EncodeUsernameField.getText(), EncodePasswordField.getText(), EncodeInputTypeButtonGroup.getSelection().getActionCommand());
             javax.swing.JOptionPane.showMessageDialog(null, "Done!");
         }
         catch (Exception e) {
